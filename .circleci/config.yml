@@ -16,16 +16,14 @@ jobs:
   print_world:
     docker:
       - image: circleci/node:13.8.0
-    steps:   
-      
-     # - run: echo $CIRCLE_TEST_URL
+    steps:       
       - run: echo My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>
            
 workflows:
   print-workflow:
     jobs:
       - print_hello
-      - print_world:
+      - print_world
           
             
 
