@@ -9,9 +9,10 @@ jobs:
   print_hello:
     docker:
       - image: circleci/node:13.8.0
-    
+  environment:
+    testguy: NTEMAMEU GUY  
     steps:      
-      - run: echo Hello       
+      - run: echo $testguy      
            
   print_world:
     docker:
