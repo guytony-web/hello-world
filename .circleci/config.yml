@@ -9,6 +9,8 @@ jobs:
   print_hello:
     docker:
       - image: circleci/node:13.8.0
+    environmpent:    
+      CIRCLE_TEST_URL: <<pipeline.project.git_url>>
     steps:      
       - run: echo Hello       
            
@@ -16,8 +18,10 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:   
-      - run: echo World       
-        
+      - run: echo World
+      - run: echo $CIRCLE_TEST_URL
+      - run: echo My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>
+           
 workflows:
   print-workflow:
     jobs:
