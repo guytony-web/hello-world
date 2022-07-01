@@ -13,7 +13,7 @@ jobs:
     #environment:
       #testguy: NTEMAMEU  
     steps:      
-      - command: echo "Hello Word" > ~/output.txt
+      - run: echo "Hello Word" > ~/output.txt
       - persist_to_workspace: 
           root: ~/
           patch: 
