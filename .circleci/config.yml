@@ -13,11 +13,11 @@ jobs:
     #environment:
       #testguy: NTEMAMEU  
     steps:
-      - run: mkdir -p workspace      
-      - run: echo "Hello Word" > workspace/output.txt
+      - run: mkdir -p ~/workspace      
+      - run: echo "Hello Word" > ~/workspace/output.txt
       - persist_to_workspace: 
-          root: workspace
-          patchs: 
+          root: ~/workspace
+          paths: 
             - output.txt  
            
   print_output_file:
@@ -25,8 +25,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps: 
       - attach_workspace: 
-          at: tmp/workspace       
-      - run: cat ~/output.txt
+          at: ~/workspace       
+      - run: cat ~/workspace/output.txt
            
 workflows:
   ours_workflow:
