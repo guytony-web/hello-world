@@ -16,7 +16,7 @@ jobs:
       - run: echo "Hello Word" > ~/output.txt
       - persist_to_workspace: 
           root: ~/
-          patch: 
+          patchs: 
             - output.txt  
            
   print_output_file:
