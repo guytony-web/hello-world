@@ -5,26 +5,34 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 
+
 jobs:
-  print_hello:
+  save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
-    environment:
-      testguy: NTEMAMEU  
+    #environment:
+      #testguy: NTEMAMEU  
     steps:      
-      - run: echo $testguy      
+      - command: echo "Hello Word" > c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline/output.txt
+      - persist_to_workspace: c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline 
+          root: c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline
+          patch: output.txt  
            
-  print_world:
+  print_output_file:
     docker:
       - image: circleci/node:13.8.0
-    steps:       
-      - run: echo My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>
+    steps: 
+      - attach_workspace: 
+          at: c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline       
+      - run: cat c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline/output.txt
            
 workflows:
   print-workflow:
     jobs:
-      - print_hello
-      - print_world
+      - save_hello_world_output
+      - print_output_file
+          requires:
+            save_hello_world_output
           
             
 
