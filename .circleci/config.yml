@@ -28,7 +28,7 @@ jobs:
       - run: cat ~/output.txt
            
 workflows:
-  print-workflow:
+  save_hello_world_output:
     jobs:
       - save_hello_world_output
       - print_output_file:
