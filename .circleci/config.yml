@@ -13,18 +13,19 @@ jobs:
     #environment:
       #testguy: NTEMAMEU  
     steps:      
-      - command: echo "Hello Word" > c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline/output.txt
-      - persist_to_workspace: c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline 
-          root: c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline
-          patch: output.txt  
+      - command: echo "Hello Word" > ~/output.txt
+      - persist_to_workspace: 
+          root: ~/
+          patch: 
+            - output.txt  
            
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps: 
       - attach_workspace: 
-          at: c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline       
-      - run: cat c/nd9991-c2-Infrastructure-as-Code-v1/supporting_material/pipeline/output.txt
+          at: ~/       
+      - run: cat ~/output.txt
            
 workflows:
   print-workflow:
