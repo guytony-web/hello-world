@@ -14,7 +14,7 @@ jobs:
       #testguy: NTEMAMEU  
     steps:
       - run: mkdir -p ~/workspace      
-      - run: echo "Hello Word" > ~/workspace/output1.txt
+      - run: echo "Hello Word" > ~/workspace/output.txt
       - persist_to_workspace: 
           root: ~/workspace
           paths: 
@@ -26,7 +26,7 @@ jobs:
     steps: 
       - attach_workspace: 
           at: ~/workspace       
-      - run: cat ~/workspace/output1.txt
+      - run: cat ~/workspace/output.txt
            
 workflows:
   ours_workflow:
