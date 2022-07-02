@@ -13,10 +13,9 @@ jobs:
   my_job:
     docker:
       - image: circleci/node:13.8.0
-    #environment:
-      #testguy: NTEMAMEU  
+   
     steps:
-      - run: print_pipeline_id      
+      - print_pipeline_id      
        
              
 workflows:
